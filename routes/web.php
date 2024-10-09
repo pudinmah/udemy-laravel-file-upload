@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PublicFotoController;
 use App\Http\Controllers\UserController;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::resource('public-foto', PublicFotoController::class);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('home', function () {

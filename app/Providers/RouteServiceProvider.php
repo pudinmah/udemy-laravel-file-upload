@@ -16,8 +16,9 @@ class RouteServiceProvider extends ServiceProvider
      * Typically, users are redirected here after authentication.
      *
      * @var string
+     // halaman pertamakali setelah login
      */
-    public const HOME = '/home';
+    public const HOME = '/public-foto';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
