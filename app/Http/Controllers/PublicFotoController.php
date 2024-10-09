@@ -43,7 +43,7 @@ class PublicFotoController extends Controller
     public function store(StorePublicFotoRequest $request)
     {
         // dd('fungsi store');
-        
+
         //upload file
         $request->file('foto')->store('public');
         //create new public foto
@@ -65,7 +65,10 @@ class PublicFotoController extends Controller
      */
     public function show(PublicFoto $publicFoto)
     {
-        dd('fungsi show');
+        // dd('fungsi show');
+
+        return response()->view('public-foto.show', compact('publicFoto'));
+
     }
 
     /**
