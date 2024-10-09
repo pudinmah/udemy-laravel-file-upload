@@ -81,7 +81,9 @@ class PublicFotoController extends Controller
      */
     public function edit(PublicFoto $publicFoto)
     {
-        dd('fungsi edit');
+        // dd('fungsi edit');
+
+        return response()->view('public-foto.edit', compact('publicFoto'));
     }
 
     /**

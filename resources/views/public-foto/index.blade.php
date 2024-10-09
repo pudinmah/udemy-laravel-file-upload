@@ -54,7 +54,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <img src="{{ asset('storage/' . $item->path) }}" alt="{{ $item->name }}">
+                                                <img src="{{ asset('storage/' . $item->path) }}" alt="{{ $item->name }}" height="250px" width="500px">
                                             </td>
                                         </tr>
                                     @endforeach
