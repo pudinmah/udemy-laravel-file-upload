@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PublicFoto;
 use App\Http\Requests\StorePublicFotoRequest;
 use App\Http\Requests\UpdatePublicFotoRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PublicFotoController extends Controller
@@ -107,7 +108,7 @@ class PublicFotoController extends Controller
             'name' => $request->name,
             'path' => $request->file('foto')->hashName(),
         ]);
-        
+
         //hapus file foto yang lama
         Storage::disk('public')->delete($oldFoto);
         //redirect ke halaman index foto
@@ -122,6 +123,14 @@ class PublicFotoController extends Controller
      */
     public function destroy(PublicFoto $publicFoto)
     {
-        dd('fungsi destroy');
+        // dd('fungsi destroy');
+
+        //delete public foto from database
+        $publicFoto->delete();
+
+        //delete file foto from storage
+        Storage::disk('public')->delete($publicFoto->path);
+
+        return redirect()->route('public-foto.index');
     }
 }
