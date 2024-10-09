@@ -31,6 +31,7 @@ class PublicFotoController extends Controller
     public function create()
     {
         // dd('fungsi create');
+        return response()->view('public-foto.create');
     }
 
     /**
@@ -41,7 +42,17 @@ class PublicFotoController extends Controller
      */
     public function store(StorePublicFotoRequest $request)
     {
-        dd('fungsi store');
+        // dd('fungsi store');
+        
+        //upload file
+        $request->file('foto')->store('public');
+        //create new public foto
+        PublicFoto::create([
+            'name' => $request->name,
+            'path' => $request->file('foto')->hashName(),
+        ]);
+        //redirect to index
+        return response()->redirectTo(route('public-foto.index'));
     }
 
     /**
