@@ -15,7 +15,10 @@ class PublicFotoController extends Controller
      */
     public function index()
     {
-        dd('fungsi index');
+        // dd('fungsi index');
+        return response()->view('public-foto.index', [
+            'public_fotos' => PublicFoto::paginate(5),
+        ]);
     }
 
     /**
@@ -27,7 +30,7 @@ class PublicFotoController extends Controller
      */
     public function create()
     {
-        dd('fungsi index');
+        // dd('fungsi create');
     }
 
     /**
@@ -60,7 +63,7 @@ class PublicFotoController extends Controller
      * @param  \App\Models\PublicFoto  $publicFoto
      * @return \Illuminate\Http\Response
        //  http://127.0.0.1:8000/public-foto/2/edit
-     * 
+     *
      */
     public function edit(PublicFoto $publicFoto)
     {
