@@ -18,6 +18,8 @@ class PublicFotoFactory extends Factory
     {
         return [
             //
+            'name' => $this->faker->name(),
+            'path' => 'default.png',
         ];
     }
 }

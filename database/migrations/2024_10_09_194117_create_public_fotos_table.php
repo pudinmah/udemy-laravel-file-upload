@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('public_fotos', function (Blueprint $table) {
             $table->id();
+            //name of the foto column
+            $table->string('name');
+            $table->string('path');
             $table->timestamps();
         });
     }

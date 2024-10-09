@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\PublicFoto;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,5 +16,6 @@ class PublicFotoSeeder extends Seeder
     public function run()
     {
         //
+        PublicFoto::factory()->count(10)->create();
     }
 }
