@@ -15,17 +15,19 @@ class PublicFotoController extends Controller
      */
     public function index()
     {
-        //
+        dd('fungsi index');
     }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
+     // http://127.0.0.1:8000/public-foto
+     *
      */
     public function create()
     {
-        //
+        dd('fungsi index');
     }
 
     /**
@@ -36,7 +38,7 @@ class PublicFotoController extends Controller
      */
     public function store(StorePublicFotoRequest $request)
     {
-        //
+        dd('fungsi store');
     }
 
     /**
@@ -44,10 +46,12 @@ class PublicFotoController extends Controller
      *
      * @param  \App\Models\PublicFoto  $publicFoto
      * @return \Illuminate\Http\Response
+     // http://127.0.0.1:8000/public-foto/1
+     *
      */
     public function show(PublicFoto $publicFoto)
     {
-        //
+        dd('fungsi show');
     }
 
     /**
@@ -55,10 +59,12 @@ class PublicFotoController extends Controller
      *
      * @param  \App\Models\PublicFoto  $publicFoto
      * @return \Illuminate\Http\Response
+       //  http://127.0.0.1:8000/public-foto/2/edit
+     * 
      */
     public function edit(PublicFoto $publicFoto)
     {
-        //
+        dd('fungsi edit');
     }
 
     /**
@@ -70,7 +76,7 @@ class PublicFotoController extends Controller
      */
     public function update(UpdatePublicFotoRequest $request, PublicFoto $publicFoto)
     {
-        //
+        dd('fungsi update');
     }
 
     /**
@@ -81,6 +87,6 @@ class PublicFotoController extends Controller
      */
     public function destroy(PublicFoto $publicFoto)
     {
-        //
+        dd('fungsi destroy');
     }
 }
