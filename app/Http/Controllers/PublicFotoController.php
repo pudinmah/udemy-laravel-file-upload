@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PublicFoto;
 use App\Http\Requests\StorePublicFotoRequest;
 use App\Http\Requests\UpdatePublicFotoRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PublicFotoController extends Controller
 {
@@ -95,7 +96,22 @@ class PublicFotoController extends Controller
      */
     public function update(UpdatePublicFotoRequest $request, PublicFoto $publicFoto)
     {
-        dd('fungsi update');
+        // dd('fungsi update');
+
+        //simpen foto yang lama
+        $oldFoto = $publicFoto->path;
+        //upload file ke public storage
+        $request->file('foto')->store('public');
+        //update data public foto di database
+        $publicFoto->update([
+            'name' => $request->name,
+            'path' => $request->file('foto')->hashName(),
+        ]);
+        
+        //hapus file foto yang lama
+        Storage::disk('public')->delete($oldFoto);
+        //redirect ke halaman index foto
+        return response()->redirectTo(route('public-foto.index'));
     }
 
     /**

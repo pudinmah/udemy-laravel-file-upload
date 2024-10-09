@@ -25,6 +25,8 @@ class StorePublicFotoRequest extends FormRequest
     {
         return [
             //
+            'name' => 'required',
+            'foto' => 'required|image|mimes:png|max:2048',
         ];
     }
 }
