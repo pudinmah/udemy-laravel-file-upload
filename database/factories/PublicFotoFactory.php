@@ -20,6 +20,8 @@ class PublicFotoFactory extends Factory
             //
             'name' => $this->faker->name(),
             'path' => 'default.png',
+            'user_id' => '11',
+
         ];
     }
 }
