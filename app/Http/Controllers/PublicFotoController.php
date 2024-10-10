@@ -54,6 +54,7 @@ class PublicFotoController extends Controller
         PublicFoto::create([
             'name' => $request->name,
             'path' => $request->file('foto')->hashName(),
+            'user_id' => Auth::user()->id,
         ]);
         //redirect to index
         return response()->redirectTo(route('public-foto.index'));
