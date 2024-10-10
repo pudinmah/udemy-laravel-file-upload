@@ -131,7 +131,9 @@ class PublicFotoController extends Controller
         $publicFoto->delete();
 
         //delete file foto from storage
-        Storage::disk('public')->delete($publicFoto->path);
+        if ($publicFoto->user_id != Auth::user()->id) {
+            return response()->redirectTo(route('public-foto.index'));
+        }
 
         return redirect()->route('public-foto.index');
     }
