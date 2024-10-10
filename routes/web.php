@@ -22,9 +22,11 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::resource('public-foto', PublicFotoController::class);
 
 Route::middleware(['auth', 'verified'])->group(function () {
+
+    Route::resource('public-foto', PublicFotoController::class);
+
     Route::get('home', function () {
         return view('dashboard.home');
     })->name('home');
