@@ -126,14 +126,20 @@ class PublicFotoController extends Controller
      */
     public function destroy(PublicFoto $publicFoto)
     {
-        // dd('fungsi destroy');
+         // dd('fungsi destroy');
+
+        // Mengecek apakah user yang sedang login adalah pemilik dari publicFoto
+        if ($publicFoto->user_id != Auth::user()->id) {
+            // Jika bukan pemilik, redirect ke halaman daftar public-foto
+            return response()->redirectTo(route('public-foto.index'));
+        }
 
         //delete public foto from database
         $publicFoto->delete();
 
-        //delete file foto from storage
-        if ($publicFoto->user_id != Auth::user()->id) {
-            return response()->redirectTo(route('public-foto.index'));
+        // Hapus file foto dari storage, jika bukan default.png
+        if ($publicFoto->path != 'default.png') {
+            Storage::disk('public')->delete($publicFoto->path);
         }
 
         return redirect()->route('public-foto.index');
