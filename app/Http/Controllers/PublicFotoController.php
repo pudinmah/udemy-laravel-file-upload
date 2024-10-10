@@ -72,6 +72,11 @@ class PublicFotoController extends Controller
     {
         // dd('fungsi show');
 
+        // jika bukan user_id maka redirect ke index
+        if ($publicFoto->user_id != Auth::user()->id) {
+            return response()->redirectTo(route('public-foto.index'));
+        }
+
         return response()->view('public-foto.show', compact('publicFoto'));
 
     }
@@ -88,6 +93,11 @@ class PublicFotoController extends Controller
     {
         // dd('fungsi edit');
 
+        // jika bukan user_id maka redirect ke index
+        if ($publicFoto->user_id != Auth::user()->id) {
+            return response()->redirectTo(route('public-foto.index'));
+        }
+
         return response()->view('public-foto.edit', compact('publicFoto'));
     }
 
@@ -101,6 +111,11 @@ class PublicFotoController extends Controller
     public function update(UpdatePublicFotoRequest $request, PublicFoto $publicFoto)
     {
         // dd('fungsi update');
+
+        // jika bukan user_id maka redirect ke index
+        if ($publicFoto->user_id != Auth::user()->id) {
+            return response()->redirectTo(route('public-foto.index'));
+        }
 
         //simpen foto yang lama
         $oldFoto = $publicFoto->path;
@@ -127,6 +142,11 @@ class PublicFotoController extends Controller
     public function destroy(PublicFoto $publicFoto)
     {
          // dd('fungsi destroy');
+
+         // jika bukan user_id maka redirect ke index
+        if ($publicFoto->user_id != Auth::user()->id) {
+            return response()->redirectTo(route('public-foto.index'));
+        }
 
         // Mengecek apakah user yang sedang login adalah pemilik dari publicFoto
         if ($publicFoto->user_id != Auth::user()->id) {
