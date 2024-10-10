@@ -18,8 +18,10 @@ class PublicFotoController extends Controller
     public function index()
     {
         // dd('fungsi index');
+        // ddd(Auth::user()->id);
+
         return response()->view('public-foto.index', [
-            'public_fotos' => PublicFoto::paginate(5),
+            'public_fotos' => PublicFoto::where('user_id', Auth::user()->id)->paginate(5),
         ]);
     }
 
